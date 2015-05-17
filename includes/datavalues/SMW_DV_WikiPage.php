@@ -190,6 +190,9 @@ class SMWWikiPageValue extends SMWDataValue {
 			if ( $this->m_dataitem->getNamespace() == NS_FILE ) {
 				$linkEscape = '';
 				$defaultCaption = '|' . $this->getShortCaptionText() . '|frameless|border|text-top';
+			} else if ( $this->m_caption === false && $this->m_outformat == 'subpagename' && $this->getTitle()->isSubpage() ) {
+				$linkEscape = '';
+				$defaultCaption = $this->getTitle()->getSubpageText();
 			} else {
 				$linkEscape = ':';
 				$defaultCaption = '|' . $this->getShortCaptionText();
